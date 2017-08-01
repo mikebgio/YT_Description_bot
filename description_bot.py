@@ -22,15 +22,19 @@ def find_raw_description(rawtext):
 
 
 def find_links(rawtext):
-    for link in BeautifulSoup(rawtext,
-                              "html.parser",
-                              parse_only=SoupStrainer('a')):
-        if link.has_attr('href'):
-            url = link['href']
-            linktext = link.string
-            redlink = '[' + linktext + ']' + '(' + url + ')'
-            link.unwrap()
+    page = BeautifulSoup(rawtext, "html.parser")
+    desc = page.find(id="eow-description")
+    print(desc)
 
+# def find_links(rawtext):
+#     for link in BeautifulSoup(rawtext,
+#                               "html.parser",
+#                               parse_only=SoupStrainer('a')):
+#         if link.has_attr('href'):
+#             url = link['href']
+#             linktext = link.string
+#             redlink = '[' + linktext + ']' + '(' + url + ')'
+#             link.unwrap()
 
 def prettify_text(rawtext):
     breaks = find_links(rawtext)
