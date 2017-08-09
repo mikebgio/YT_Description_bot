@@ -3,9 +3,7 @@
 
 import praw
 import requests
-from bs4 import BeautifulSoup, SoupStrainer
-
-DIV = "\n" + ("~*" * 20)  # This is just a divider for printing
+from bs4 import BeautifulSoup
 
 reddit = praw.Reddit('description_bot',
                      user_agent='For grabbing and commenting with the YouTube Description')
@@ -22,9 +20,4 @@ def get_description(rawtext):
     return(description.get_text())
 
 
-
-# rawtext = find_raw_description(r.text)
-# prettify_text(rawtext)
 get_description(r.text)
-
-# print(rawtext)
